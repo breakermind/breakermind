@@ -96,15 +96,19 @@ sudo certbot renew --dry-run
 ```conf
 server {	
 	listen 443 ssl http2;	
+	# listen [::]:443 ssl http2;
+	
 	server_name domain.xx;
 	root /home/username/domain.xx/public;	
 	index index.php index.html;
 
 	ssl_certificate /etc/letsencrypt/live/domain.xx/fullchain.pem;
 	ssl_certificate_key /etc/letsencrypt/live/domain.xx/privkey.pem;
-	ssl_trusted_certificate /etc/letsencrypt/live/domain.xx/chain.pem;	
-	ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+	ssl_trusted_certificate /etc/letsencrypt/live/domain.xx/chain.pem;
+	
+	ssl_protocols       TLSv1.2 TLSv1.3;
 	ssl_ciphers         HIGH:!aNULL:!MD5;	
+	
 	location / {
 		# try_files $uri $uri/ =404;
 		try_files $uri $uri/ /index.php$is_args$args;
@@ -117,7 +121,8 @@ server {
 	location ~* \.(js|css|png|jpg|jpeg|gif|webp|svg|ico)$ {
 		expires -1;
 		access_log off;
-	}		
+	}
+	
 	gzip on;
 	charset utf-8;
 	disable_symlinks off;
