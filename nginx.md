@@ -92,5 +92,37 @@ renew_hook = systemctl reload nginx
 sudo certbot renew --dry-run
 ```
 
-### Tls certs
-https://gist.github.com/wowpowhub/ba34e07fd094e8b79fdb27e840db91eb
+### Tls host
+```conf
+server {	
+	listen 443 ssl http2;	
+	server_name domain.xx;
+	root /home/username/domain.xx/public;	
+	index index.php index.html;
+
+	ssl_certificate /etc/letsencrypt/live/domain.xx/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/domain.xx/privkey.pem;
+	ssl_trusted_certificate /etc/letsencrypt/live/domain.xx/chain.pem;	
+	ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+	ssl_ciphers         HIGH:!aNULL:!MD5;	
+	location / {
+		# try_files $uri $uri/ =404;
+		try_files $uri $uri/ /index.php$is_args$args;
+	}
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php8.0-fpm.sock;
+		# fastcgi_pass 127.0.0.1:9000;
+	}
+	location ~* \.(js|css|png|jpg|jpeg|gif|webp|svg|ico)$ {
+		expires -1;
+		access_log off;
+	}		
+	gzip on;
+	charset utf-8;
+	disable_symlinks off;
+	client_max_body_size 100M;
+	keepalive_timeout 60;
+}
+```
+
