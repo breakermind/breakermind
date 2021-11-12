@@ -6,6 +6,10 @@ Save to ~/.ssh/username
 ssh-keygen -t ed25519 -C "email@example.com" -f ~/.ssh/username
 ```
 
+### Dodaj nowy klucz w panelu z pliku username.pub
+nano ~/.ssh/username.pub
+- https://github.com/settings/keys
+
 ### Konfiguracja wielu kluczy ssh do github
 nano ~/.ssh/config
 ```sh
@@ -17,7 +21,9 @@ Host username-github.com
     # AddressFamily inet
     # User git  
     # Port 22
-    
+
+# Następny klucz tutaj ...
+
 # Ssh, github.com, others
 Host *
     IdentityFile ~/.ssh/key-ecdsa
