@@ -1,0 +1,5 @@
+- 👋 Hi, I’m @breakermind
+- 👀 I’m interested in: Php, Laravel, 3D Graphics
+- 🌱 I’m currently learning: Js franeworks
+- 💞️ I’m looking to collaborate on: hmm
+- 📫 How to reach me: Send me an email ;) 
