@@ -5,7 +5,7 @@
 - 👌 I’m looking to collaborate on whatever.
 - ✉️ How to reach me? Send me an email. 
 
-### Github logos
+# Github logos
 - https://github.com/breakermind/breakermind/tree/main/github-logo
 
 <div style="display: flex">
