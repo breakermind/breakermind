@@ -1,5 +1,5 @@
-- 👋 Hi, I’m @breakermind
+- ❣️ Hi, I’m @breakermind
 - 👀 I’m interested in php, laravel, 3d graphics, fx.
 - 🌱 I’m currently learning js franeworks.
-- 💞️ I’m looking to collaborate on whatever.
-- 📫 How to reach me: send me an email. 
+- 👌 I’m looking to collaborate on whatever.
+- ✉️ How to reach me: send me an email. 
