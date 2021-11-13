@@ -7,6 +7,9 @@
 
 ### Github logos
 - https://github.com/breakermind/breakermind/tree/main/github-logo
-<img src="https://raw.githubusercontent.com/breakermind/breakermind/main/github-logo/github.png" width="33.333%">
-<img src="https://raw.githubusercontent.com/breakermind/breakermind/main/github-logo/github-pink.png" width="33.333%">
-<img src="https://raw.githubusercontent.com/breakermind/breakermind/main/github-logo/github-cyber.png" width="33.333%">
+
+<div>
+  <img align=top src="https://raw.githubusercontent.com/breakermind/breakermind/main/github-logo/github.png" width="33.333%">
+  <img align=top src="https://raw.githubusercontent.com/breakermind/breakermind/main/github-logo/github-pink.png" width="33.333%">
+  <img align=top src="https://raw.githubusercontent.com/breakermind/breakermind/main/github-logo/github-cyber.png" width="33.333%">
+</div>
