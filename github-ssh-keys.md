@@ -1,4 +1,5 @@
-# Klucze ssh github
+# Github klucze SSH
+Kilka kluczy do github, autoryzacja SSH do kilku kont github z jednego hosta.
 
 ### Utwórz klucz ssh
 Save to ~/.ssh/username
