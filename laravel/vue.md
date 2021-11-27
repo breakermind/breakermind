@@ -17,11 +17,17 @@ php artisan ui vue
 
 npm install vue-loader@^15.9.7 --save-dev --legacy-peer-deps
 
-npm install && npm run dev
+# install dependencies
+npm install
 
-php artisan storage:link
+# webpack compile after js, css update
+npm run dev
 
+# run local www server
 php artisan serv
+
+# optional link storage (php)
+php artisan storage:link
 ```
 
 ## Welcomepage
