@@ -104,11 +104,23 @@ mix.js('resources/js/app.js', 'public/js')
 // ], 'public/css/all.css');
 ```
 
+### Remove bootstrap css
+resources/sass/app.scss
+```
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap remove
+// @import '~bootstrap/scss/bootstrap';
+```
+
 ## Read
 ```
 https://levelup.gitconnected.com/how-to-set-up-and-use-vue-in-your-laravel-8-app-2dd0f174e1f8
 https://dev.to/wanjema/getting-started-with-laravel-and-vue-js-2hc6
-# optional
 https://laravel.com/docs/7.x/frontend
 https://laravel.com/docs/7.x/mix
 ```
