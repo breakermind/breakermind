@@ -1,11 +1,12 @@
 # Vue + Laravel
+Jak zainstalować i uruchomić SPA z Vue.js i Laravel.
 
-## Install packages
+## Instalacja
 ```sh
 sudo apt install composer npm nodejs
 ```
 
-## Install laravel
+## Instalacja laravela i vue
 ```sh
 composer create-project laravel/laravel vue
 
@@ -30,7 +31,7 @@ php artisan serv
 php artisan storage:link
 ```
 
-## Welcomepage
+## Strona główna
 ```html
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -63,7 +64,7 @@ php artisan storage:link
 </html>
 ```
 
-## Component
+## Komponent vue
 resources/js/components/ExampleComponent.vue
 ```html
 <template>
@@ -90,14 +91,14 @@ resources/js/components/ExampleComponent.vue
 	}
 </script>
 
-/* Import from resources/css/app.css */
+/* Import css z resources/css/app.css */
 <style lang="css" scoped>
 	@import "../../css/app.css";
 </style>
 ```
 
 ## Webpack
-webpack.mix.js
+Zmień w pliku: **webpack.mix.js**
 ```js
 const mix = require('laravel-mix');
 
@@ -105,13 +106,28 @@ mix.js('resources/js/app.js', 'public/js')
     .vue({ extractStyles: true })
     .sass('resources/sass/app.scss', 'public/css');
 
+// Niepotrzebne
 // mix.styles([
 // 	'public/css/vendor/var.css',
 // ], 'public/css/all.css');
 ```
 
-### Remove bootstrap css
-resources/sass/app.scss
+### Jak dodać CSS
+Dodaj do pliku: **resources/css/app.css** i uruchom: **npm run dev**
+```css
+.app {
+	font-size: 16px;
+}
+.card-body-resources {
+	color: #f60;
+}
+.card-body {
+	color: #5c5;
+}
+```
+
+## Jak pozbyć się bootstrap.css
+Zmień w pliku: **resources/sass/app.scss**
 ```
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
@@ -123,10 +139,11 @@ resources/sass/app.scss
 // @import '~bootstrap/scss/bootstrap';
 ```
 
-## Read
+## Do poczytania
 ```
 https://levelup.gitconnected.com/how-to-set-up-and-use-vue-in-your-laravel-8-app-2dd0f174e1f8
 https://dev.to/wanjema/getting-started-with-laravel-and-vue-js-2hc6
+
 https://laravel.com/docs/7.x/frontend
 https://laravel.com/docs/7.x/mix
 ```
