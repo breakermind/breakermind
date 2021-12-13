@@ -71,6 +71,21 @@
 </script>
 ```
 
+### Create csrf token in web controller
+```php
+function csrf()
+{
+	request()->session()->regenerateToken();
+
+	session(['cnt' => session('cnt') + 1]);
+
+	return response([
+		'message' => 'Csrf token created.',
+		'counter' => session('cnt')
+	]);
+}
+```
+
 ### Exclude route from csrf protection
 ```php
 <?php
