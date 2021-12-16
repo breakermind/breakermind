@@ -15,6 +15,14 @@
 		// "functions": "#ff3300",
 		"textMateRules": [
 			{
+				// Variable, class object variable color
+				"scope":"variable.other",
+				"settings": {
+					"foreground": "#005cc5",
+					// "fontStyle": "bold"
+				}
+			},
+			{
 				// Class definition methods color
 				"scope":"entity.name.function",
 				"settings": {
