@@ -1,0 +1,90 @@
+{
+	"git.enabled": false,
+	"editor.fontSize": 14,
+	"editor.fontWeight": "400",
+	"editor.fontFamily": "'Fira Code', 'Monospace', 'Droid Sans Mono', 'Fira Code', 'Inconsolata', 'Source Code Pro', 'Liberation Mono'",
+	"editor.wordWrap": "off",
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.autoClosingBrackets": "always",
+	"editor.autoClosingQuotes": "never",
+	"telemetry.enableTelemetry": false,
+	"telemetry.enableCrashReporter": false,
+	"workbench.enableExperiments": false,
+	"workbench.startupEditor": "none",
+	"workbench.tree.renderIndentGuides": "always",
+	"workbench.tree.indent": 18,
+	"workbench.colorCustomizations": {
+		"tree.indentGuidesStroke": "#d4b0cc"
+	},
+	"workbench.hover.delay": 3000,
+	"git.autofetch": false,
+	"files.trimTrailingWhitespace": true,
+	"terminal.integrated.allowChords": false,
+	"update.mode": "none",
+	"extensions.autoUpdate": false,
+	"security.workspace.trust.untrustedFiles": "open",
+	"php.executablePath": "/usr/bin/php",
+	"php.memoryLimit": "256M",
+	"php.validate.executablePath": "/usr/bin/php",
+	"php.validate.run": "onSave",
+	"php.suggest.basic": false,
+	"php.validate.enable": true,
+	"intelephense.telemetry.enabled": false,
+	"intelephense.diagnostics.implementationErrors": false,
+	"intelephense.environment.phpVersion": "7.4.0",
+	"search.exclude": {
+		"**/.git/objects/": true,
+		"**/.git/subtree-cache/": true,
+		"**/node_modules/*/": true
+	},
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/node_modules/*/**": true
+	},
+	// Editor colors
+	"editor.tokenColorCustomizations" : {
+		// "numbers": "#d7eb22",
+		// "comments": "#677ea8",
+		// "functions": "#ff3300",
+		"textMateRules": [
+			{
+				// Class definition methods color
+				"scope":"entity.name.function",
+				"settings": {
+					"foreground": "#98d900",
+					// "fontStyle": "bold"
+				}
+			},
+			{
+				// Class object methods color
+				"scope": [
+					"meta.method-call.php entity.name.function.php",
+				],
+				"settings": {
+					"foreground": "#e36209",
+					// "fontStyle": "bold",
+				}
+			},
+			{
+				// Comments
+				"scope": [
+					"comment",
+					"comment.block",
+					"punctuation.definition.comment",
+					"punctuation.definition.comment.end",
+					"punctuation.definition.comment.begin",
+					"punctuation.definition.comment.begin.documentation",
+					"punctuation.definition.comment.end.documentation",
+					"comment.block.documentation"
+				],
+				"settings": {
+					"fontStyle": "italic",
+					"foreground": "#00339955",
+				}
+			}
+		],
+	}
+}
