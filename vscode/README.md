@@ -15,18 +15,10 @@
 		// "functions": "#ff3300",
 		"textMateRules": [
 			{
-				// Variable, class object variable color
-				"scope":"variable.other",
-				"settings": {
-					"foreground": "#005cc5",
-					// "fontStyle": "bold"
-				}
-			},
-			{
 				// Class definition methods color
 				"scope":"entity.name.function",
 				"settings": {
-					"foreground": "#98d900",
+					// "foreground": "#648f00",
 					// "fontStyle": "bold"
 				}
 			},
@@ -36,7 +28,7 @@
 					"meta.method-call.php entity.name.function.php",
 				],
 				"settings": {
-					"foreground": "#e36209",
+					"foreground": "#f169a9",
 					// "fontStyle": "bold",
 				}
 			},
@@ -53,8 +45,39 @@
 					"comment.block.documentation"
 				],
 				"settings": {
-					"fontStyle": "italic",
-					"foreground": "#00339955",
+					// "fontStyle": "italic",
+					// "foreground": "#bfc9d6",
+				}
+			},			
+			{
+				// Php class: Request $req, Route::
+				"scope": [
+					"support.class.php",
+				],
+				"settings": {
+					"foreground": "#e4c282",
+					// "fontStyle": "bold"
+				}
+			},			
+			{
+				// Namespace and Use keywords
+				"scope": [
+					"keyword.other.namespace.php",
+					"keyword.other.use.php",
+				],
+				"settings": {
+					// "foreground": "#469092",
+					// "fontStyle": "bold"
+				}
+			},			
+			{
+				// Namespace ClassName
+				"scope": [
+					"source.php meta.use support.class.php",
+				],
+				"settings": {
+					"foreground": "#ffcb6b",
+					"fontStyle": "bold"
 				}
 			}
 		],
