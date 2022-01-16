@@ -1,6 +1,13 @@
 # Instalacja serwerów aplikacji
 Debian 11, Php 8.1, MariaDB 10.5.12-MariaDB, Postfix
 
+## Apt https
+```sh
+sudo apt install -y apt-transport-https
+sed -i 's/http\:/https\:/g' /etc/apt/sources.list
+sudo apt update
+```
+
 ## Baza danych i użytkownik
 mysql -u root -p
 ```sql
