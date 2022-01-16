@@ -6,6 +6,7 @@ Debian 11, Php 8.1, MariaDB 10.5.12-MariaDB, Postfix
 sudo apt install -y apt-transport-https
 sed -i 's/http\:/https\:/g' /etc/apt/sources.list
 sudo apt update
+sudo apt install net-tools mailutils dnsutils ufw nginx mariadb-server php-fpm postfix
 ```
 
 ## Baza danych i użytkownik
@@ -203,6 +204,37 @@ admin@app.xx root
 ```sh
 postmap /etc/postfix/virtual
 sudo service postfix restart
+```
+
+## Ufw firewall
+
+### Ufw porty
+```sh
+# Dla wszystkich ip
+sudo ufw allow 22/tcp
+
+# Dla maski adresów
+sudo ufw allow from 1.2.0.0/16 to any port 22
+sudo ufw allow from 1.2.0.0/16 to any port 22 proto tcp
+```
+
+## Ufw http, https
+```sh
+# sudo ufw allow 25/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+```
+
+### Ufw defaultowa polityka
+```sh
+sudo ufw default allow outgoing
+sudo ufw default deny incoming
+```
+
+### Ufw włącz
+```sh
+sudo ufw logging on
+sudo ufw enable
 ```
 
 ## Restart serwerów
