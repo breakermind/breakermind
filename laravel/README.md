@@ -131,6 +131,7 @@ nano /etc/hosts
 ```
 
 ### Nginx konfiguracja hosta (app.xx)
+sudo nano /etc/nginx/sites-enabled
 ```conf
 server {
 	listen 80;
