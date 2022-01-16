@@ -186,6 +186,17 @@ sudo service nginx restart
 
 ## Postfix
 
+### hostname
+```sh
+```
+
+### Smtp host i domena
+```cf
+mydestination = $myhostname, app.xx, vps.localhost, localhost.localhost, localhost
+relayhost =
+relay_domains =
+```
+
 ### Wirtualne skrzynki konfiguracja
 sudo nano /etc/postfix/main.cf
 ```cf
