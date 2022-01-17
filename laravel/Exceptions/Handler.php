@@ -4,6 +4,17 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Exception;
+// use Symfony\Component\Routing\Exception\InvalidParameterException;
+// use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+// use Symfony\Component\Routing\Exception\RouteNotFoundException;
+// use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+// use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+// use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
+// use Illuminate\Http\Exceptions\HttpResponseException;
+// use Illuminate\Http\Exceptions\PostTooLargeException;
+// use Illuminate\Http\Exceptions\ThrottleRequestsException;
+// use Illuminate\Http\JsonResponse;
 
 class Handler extends ExceptionHandler
 {
@@ -41,15 +52,17 @@ class Handler extends ExceptionHandler
 				$request->is('api/*') ||
 				$request->wantsJson()
 			) {
+				$msg = empty($e->getMessage()) ? 'Not Found' : $e->getMessage();
+				$code = empty($e->getCode()) ? 404 : $e->getCode();
+
 				return response()->json([
-					'message' => 'Some api errors occurred.',
+					'message' => $msg,
+					'code' => $code,
 					'ex' => [
-						'message' => empty($e->getMessage()) ? 'Not Found.' : $e->getMessage(),
-						'code' => empty($e->getCode()) ? 404 : $e->getCode(),
 						'name' => $this->getClassName(get_class($e)),
 						'namespace' => get_class($e),
 					]
-				], 404);
+				], $code);
 			}
 		});
 
