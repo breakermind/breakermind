@@ -4,7 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use Exception;
+
+// use Exception;
 // use Symfony\Component\Routing\Exception\InvalidParameterException;
 // use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 // use Symfony\Component\Routing\Exception\RouteNotFoundException;
