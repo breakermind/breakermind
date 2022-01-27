@@ -75,7 +75,7 @@ class ResizeImage
 	 * @param  string $imageQuality 	  - The qulaity level of image to create
 	 * @return Saves the image
 	 */
-	public function save($savePath, $imageQuality="100", $download = false)
+	public function save($savePath, $imageQuality = 100, $download = false)
 	{
 		switch($this->ext) {
 			case 'image/jpg':
