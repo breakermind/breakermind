@@ -15,20 +15,21 @@ use Exception;
 class ResizeImage
 {
 	public $maxWidth = 1366;
+	public $rateLimitKb = 512;
 	private $ext;
 	private $image;
 	private $newImage;
 	private $origWidth;
 	private $origHeight;
 	private $resizeWidth;
-	private $resizeHeight;
+	private $resizeHeight;	
 
 	/**
 	 * Class constructor requires to send through the image filename
 	 *
 	 * @param string $filename - Filename of the image you want to resize
 	 */
-	public function __construct( $filename )
+	public function __construct( $filename, $throw = false )
 	{
 		if(file_exists($filename)) {
 			$this->setImage( $filename );
@@ -66,6 +67,7 @@ class ResizeImage
 		$this->origWidth = imagesx($this->image);
 		$this->origHeight = imagesy($this->image);
 	}
+
 	/**
 	 * Save the image as the image type the original image was
 	 *
@@ -111,14 +113,14 @@ class ResizeImage
 				}
 				break;
 		}
+
 		if($download) {
-			header('Content-Description: File Transfer');
-			header("Content-type: application/octet-stream");
-			header("Content-disposition: attachment; filename=".$savePath);
-			readfile("".$savePath);
+			$this->download($savePath);
 		}
+
 		imagedestroy($this->newImage);
 	}
+
 	/**
 	 * Resize the image to these set dimensions
 	 *
@@ -150,7 +152,7 @@ class ResizeImage
 				{
 					if ( $this->origWidth > $this->origHeight ) {
 						$this->resizeHeight = $this->resizeHeightByWidth($width);
-			  			$this->resizeWidth  = $width;
+						$this->resizeWidth  = $width;
 					} else if( $this->origWidth < $this->origHeight ) {
 						$this->resizeWidth  = $this->resizeWidthByHeight($height);
 						$this->resizeHeight = $height;
@@ -163,6 +165,7 @@ class ResizeImage
 		}
 		$this->newImage = imagecreatetruecolor($this->resizeWidth, $this->resizeHeight);
 	}
+
 	/**
 	 * Get the resized height from the width keeping the aspect ratio
 	 *
@@ -173,6 +176,7 @@ class ResizeImage
 	{
 		return floor(($this->origHeight/$this->origWidth)*$width);
 	}
+
 	/**
 	 * Get the resized width from the height keeping the aspect ratio
 	 *
@@ -198,8 +202,36 @@ class ResizeImage
 		$d2 = substr($h,2,2);
 		$d3 = substr($h,4,2);
 		if($long) {
-			return $d1.'/'.$d2.'/'.$d3.'/'.$h.'.'.$ext;			
+			return $d1.'/'.$d2.'/'.$d3.'/'.$h.'.'.$ext;
 		}
 		return $d1.'/'.$d2.'/'.$h.'.'.$ext;
+	}
+
+	/**
+	 * Download resized file.
+	 *
+	 * @param  string $path Path to file.
+	 * @return void
+	 */
+	function download($path) 
+	{
+		$limit = ini_get('max_execution_time');
+		ini_set('max_execution_time', 0);
+
+		header('Cache-control: private');
+		header('Content-Length: ' . filesize($path));
+		header('Content-Description: File Transfer');
+		header("Content-Type: application/octet-stream");
+		header("Content-Disposition: attachment; filename=".basename($path));
+
+		flush();
+		$f = fopen($path, 'r');
+		while (!feof($f)) {
+			print fread($f, round($this->rateLimitKb * 1024));
+			flush();
+			sleep(1);
+		}
+
+		ini_set('max_execution_time', $limit);
 	}
 }
